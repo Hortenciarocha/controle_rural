@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Verde — cor primária (identidade rural, ações principais) */
+  --color-primary-50: #f1f8f0;
+  --color-primary-100: #dcedd9;
+  --color-primary-200: #b9dbb4;
+  --color-primary-300: #8fc586;
+  --color-primary-400: #63a758;
+  --color-primary-500: #3f8a37;
+  --color-primary-600: #2f6d29;
+  --color-primary-700: #275722;
+  --color-primary-800: #22461f;
+  --color-primary-900: #1d3b1c;
+
+  /* Neutros — fundo e texto */
+  --color-neutral-50: #f8f9f7;
+  --color-neutral-100: #f0f2ee;
+  --color-neutral-200: #dfe3da;
+  --color-neutral-300: #c3c9bc;
+  --color-neutral-400: #9aa393;
+  --color-neutral-500: #778070;
+  --color-neutral-600: #5c6456;
+  --color-neutral-700: #494f45;
+  --color-neutral-800: #3a3e37;
+  --color-neutral-900: #24261f;
+
+  /* Laranja/Amarelo — alertas de atenção */
+  --color-warning-50: #fff8ec;
+  --color-warning-100: #ffecc7;
+  --color-warning-300: #ffcf6b;
+  --color-warning-500: #e8a223;
+  --color-warning-600: #c8810f;
+  --color-warning-700: #a3650c;
+
+  /* Vermelho — urgente */
+  --color-danger-50: #fef2f1;
+  --color-danger-100: #fde1de;
+  --color-danger-300: #f5a39c;
+  --color-danger-500: #d94436;
+  --color-danger-600: #b8321f;
+  --color-danger-700: #942719;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-neutral-50 text-neutral-900 font-sans antialiased;
+}
+
+/* Toques grandes o suficiente para uso no campo (RNF de acessibilidade/usabilidade) */
+button,
+a,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

@@ -1,0 +1,20 @@
+node_modules
+dist
+dist-ssr
+*.local
+*.log
+
+# Ambiente (contém chaves do Supabase e futuras chaves de API)
+.env
+.env.local
+
+# Supabase CLI
+supabase/.branches
+supabase/.temp
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
