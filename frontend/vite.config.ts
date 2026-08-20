@@ -14,4 +14,10 @@ export default defineConfig({
   server: {
     port: 5173,
   },
+  build: {
+    // O chunk de entrada inclui o SDK do Supabase (auth + realtime + postgrest),
+    // necessário já na tela de login; as rotas internas já são carregadas sob
+    // demanda (ver App.tsx). ~172kb gzip de entrada é o piso real dessa stack.
+    chunkSizeWarningLimit: 650,
+  },
 })
