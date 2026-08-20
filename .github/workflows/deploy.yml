@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -27,13 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-           - name: Install dependencies
+      - name: Install dependencies
         run: |
           rm -rf node_modules frontend/node_modules
           rm -f package-lock.json frontend/package-lock.json
           npm install
+
       - name: Build frontend
         run: npm run build:frontend
         env:
