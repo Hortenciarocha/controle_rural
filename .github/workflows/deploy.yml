@@ -31,9 +31,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
-          npm install @rolldown/binding-linux-x64-gnu --no-save
-          npm install lightningcss-linux-x64-gnu --no-save
+          rm -rf node_modules frontend/node_modules
+          npm install
       - name: Build frontend
         run: npm run build:frontend
         env:
