@@ -6,7 +6,7 @@ export function TopBar() {
   const { sair } = useAuth()
 
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-neutral-200 bg-white/90 px-4 py-3 backdrop-blur">
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-neutral-200 bg-white/90 px-4 py-3.5 backdrop-blur">
       <PropriedadeSwitcher />
       <button
         onClick={sair}

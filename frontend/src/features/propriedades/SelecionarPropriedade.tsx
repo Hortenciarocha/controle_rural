@@ -31,9 +31,9 @@ export function SelecionarPropriedade() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-lg flex-col justify-center px-4 py-10">
       <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Sprout className="text-primary-600" size={24} />
-          <h1 className="text-lg font-semibold text-neutral-900">Suas propriedades</h1>
+        <div className="flex items-center gap-2 text-primary-700">
+          <Sprout size={22} strokeWidth={2.25} />
+          <h1 className="font-display text-xl font-semibold text-neutral-900">Suas propriedades</h1>
         </div>
         <button
           onClick={sair}

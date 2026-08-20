@@ -3,49 +3,52 @@
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
 @import "@fontsource/inter/700.css";
+@import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource-variable/fraunces/standard-italic.css";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Fraunces", ui-serif, Georgia, serif;
 
   /* Verde — cor primária (identidade rural, ações principais) */
-  --color-primary-50: #f1f8f0;
-  --color-primary-100: #dcedd9;
-  --color-primary-200: #b9dbb4;
-  --color-primary-300: #8fc586;
-  --color-primary-400: #63a758;
-  --color-primary-500: #3f8a37;
-  --color-primary-600: #2f6d29;
-  --color-primary-700: #275722;
-  --color-primary-800: #22461f;
-  --color-primary-900: #1d3b1c;
+  --color-primary-50: #f2f7ee;
+  --color-primary-100: #e0ebd7;
+  --color-primary-200: #bfd8ac;
+  --color-primary-300: #98bf7c;
+  --color-primary-400: #729e55;
+  --color-primary-500: #4c7e35;
+  --color-primary-600: #386228;
+  --color-primary-700: #2c4d21;
+  --color-primary-800: #243e1c;
+  --color-primary-900: #1c3016;
 
-  /* Neutros — fundo e texto */
-  --color-neutral-50: #f8f9f7;
-  --color-neutral-100: #f0f2ee;
-  --color-neutral-200: #dfe3da;
-  --color-neutral-300: #c3c9bc;
-  --color-neutral-400: #9aa393;
-  --color-neutral-500: #778070;
-  --color-neutral-600: #5c6456;
-  --color-neutral-700: #494f45;
-  --color-neutral-800: #3a3e37;
-  --color-neutral-900: #24261f;
+  /* Neutros — fundo e texto, com leve subtom quente (terra), não cinza puro */
+  --color-neutral-50: #faf9f6;
+  --color-neutral-100: #f1efe8;
+  --color-neutral-200: #e1ded2;
+  --color-neutral-300: #c7c2b0;
+  --color-neutral-400: #a29c87;
+  --color-neutral-500: #7d7869;
+  --color-neutral-600: #5f5b4f;
+  --color-neutral-700: #46433a;
+  --color-neutral-800: #33312a;
+  --color-neutral-900: #201f1a;
 
-  /* Laranja/Amarelo — alertas de atenção */
-  --color-warning-50: #fff8ec;
-  --color-warning-100: #ffecc7;
-  --color-warning-300: #ffcf6b;
-  --color-warning-500: #e8a223;
-  --color-warning-600: #c8810f;
-  --color-warning-700: #a3650c;
+  /* Âmbar — alertas de atenção e destaques */
+  --color-warning-50: #fdf6ea;
+  --color-warning-100: #f9e7c2;
+  --color-warning-300: #eeb95c;
+  --color-warning-500: #d1911f;
+  --color-warning-600: #ab7211;
+  --color-warning-700: #85590f;
 
   /* Vermelho — urgente */
-  --color-danger-50: #fef2f1;
-  --color-danger-100: #fde1de;
-  --color-danger-300: #f5a39c;
-  --color-danger-500: #d94436;
-  --color-danger-600: #b8321f;
-  --color-danger-700: #942719;
+  --color-danger-50: #fbf1ef;
+  --color-danger-100: #f4dcd6;
+  --color-danger-300: #e19a8a;
+  --color-danger-500: #bf4a34;
+  --color-danger-600: #9c3826;
+  --color-danger-700: #7c2c1e;
 }
 
 html {
@@ -63,4 +66,45 @@ input,
 select,
 textarea {
   font-family: inherit;
+}
+
+/* Foco de teclado sempre visível (acessibilidade) */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/*
+ * Elemento assinatura: sulcos de plantio — referência abstrata e discreta a
+ * talhões plantados em linha, usada como textura de fundo em telas de
+ * destaque (login, cabeçalho do painel). Nunca no conteúdo funcional.
+ */
+.textura-sulcos {
+  background-image: repeating-linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--color-primary-900) 6%, transparent) 0px,
+    color-mix(in srgb, var(--color-primary-900) 6%, transparent) 2px,
+    transparent 2px,
+    transparent 28px
+  );
+}
+
+.textura-sulcos-clara {
+  background-image: repeating-linear-gradient(
+    115deg,
+    color-mix(in srgb, white 14%, transparent) 0px,
+    color-mix(in srgb, white 14%, transparent) 2px,
+    transparent 2px,
+    transparent 28px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

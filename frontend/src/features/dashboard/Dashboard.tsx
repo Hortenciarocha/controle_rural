@@ -12,7 +12,6 @@ import {
   useAtividadesPendentesDashboard,
   useAlertasEstoqueBaixo,
 } from '@/hooks/useDashboard'
-import { PageHeader } from '@/components/layout/PageHeader'
 import { StatCard } from '@/components/ui/StatCard'
 import { Card } from '@/components/ui/Card'
 import { Alert } from '@/components/ui/Alert'
@@ -20,7 +19,14 @@ import { EmptyState } from '@/components/ui/EmptyState'
 import { PageLoader } from '@/components/ui/PageLoader'
 import { formatarMoeda, formatarData } from '@/lib/format'
 
-const coresGrafico = { receita: '#3f8a37', despesa: '#d94436' }
+const coresGrafico = { receita: '#4c7e35', despesa: '#bf4a34' }
+
+const dataFormatada = new Date().toLocaleDateString('pt-BR', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+})
+const dataPorExtenso = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1)
 
 export function Dashboard() {
   const { propriedade, propriedadeId, carregando } = usePropriedadeAtiva()
@@ -36,12 +42,15 @@ export function Dashboard() {
 
   return (
     <div>
-      <PageHeader titulo={propriedade ? `Painel — ${propriedade.nome}` : 'Painel'} />
+      <div className="textura-sulcos relative mb-5 overflow-hidden rounded-2xl bg-primary-700 px-5 py-6 text-white">
+        <p className="text-sm text-primary-100">{dataPorExtenso}</p>
+        <h1 className="font-display text-2xl font-semibold">{propriedade ? propriedade.nome : 'Painel'}</h1>
+      </div>
 
       {carregandoFinanceiro ? (
         <PageLoader />
       ) : (
-        <div className="mb-5 grid grid-cols-3 gap-3">
+        <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <StatCard titulo="Receita (mês)" valor={formatarMoeda(financeiroMes?.receita ?? 0)} status="ok" />
           <StatCard titulo="Despesa (mês)" valor={formatarMoeda(financeiroMes?.despesa ?? 0)} status="urgente" />
           <StatCard

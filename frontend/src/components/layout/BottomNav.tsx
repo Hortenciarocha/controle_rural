@@ -3,7 +3,7 @@ import { navItens } from './navItens'
 
 export function BottomNav() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 flex border-t border-neutral-200 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-40 flex border-t border-neutral-200 bg-white/95 backdrop-blur pb-[env(safe-area-inset-bottom)] md:hidden">
       {navItens.map(({ rotulo, caminho, icone: Icone }) => (
         <NavLink
           key={caminho}
@@ -14,8 +14,18 @@ export function BottomNav() {
             }`
           }
         >
-          <Icone size={20} />
-          <span className="leading-tight">{rotulo}</span>
+          {({ isActive }) => (
+            <>
+              <span
+                className={`flex h-7 w-11 items-center justify-center rounded-full transition-colors ${
+                  isActive ? 'bg-primary-100' : ''
+                }`}
+              >
+                <Icone size={19} />
+              </span>
+              <span className="leading-tight">{rotulo}</span>
+            </>
+          )}
         </NavLink>
       ))}
     </nav>

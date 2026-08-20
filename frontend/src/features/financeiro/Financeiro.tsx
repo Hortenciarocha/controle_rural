@@ -72,7 +72,7 @@ export function Financeiro() {
         </label>
       </div>
 
-      <div className="mb-5 grid grid-cols-3 gap-3">
+      <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <StatCard titulo="Receita" valor={formatarMoeda(receita)} status="ok" />
         <StatCard titulo="Despesa" valor={formatarMoeda(despesa)} status="urgente" />
         <StatCard titulo="Lucro" valor={formatarMoeda(lucro)} status={lucro >= 0 ? 'ok' : 'urgente'} />

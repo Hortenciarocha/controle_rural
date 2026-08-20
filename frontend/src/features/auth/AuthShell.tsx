@@ -3,16 +3,20 @@ import { Sprout } from 'lucide-react'
 
 export function AuthShell({ titulo, subtitulo, children }: { titulo: string; subtitulo: string; children: ReactNode }) {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-neutral-50 px-4 py-10">
-      <div className="w-full max-w-sm">
-        <div className="mb-6 flex flex-col items-center text-center">
-          <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-600">
-            <Sprout className="text-white" size={26} />
-          </span>
-          <h1 className="text-xl font-semibold text-neutral-900">{titulo}</h1>
-          <p className="mt-1 text-sm text-neutral-500">{subtitulo}</p>
+    <div className="min-h-dvh bg-neutral-50">
+      <div className="textura-sulcos-clara relative bg-primary-700 px-4 pb-16 pt-12 text-center">
+        <div className="flex items-center justify-center gap-2 text-white">
+          <Sprout size={22} strokeWidth={2.25} />
+          <span className="font-display text-lg font-medium tracking-tight">Controle Rural</span>
         </div>
-        {children}
+      </div>
+
+      <div className="relative mx-auto -mt-10 w-full max-w-sm px-4 pb-12">
+        <div className="rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-lg shadow-neutral-900/5">
+          <h1 className="font-display text-xl font-semibold text-neutral-900">{titulo}</h1>
+          <p className="mt-1 mb-6 text-sm text-neutral-500">{subtitulo}</p>
+          {children}
+        </div>
       </div>
     </div>
   )
