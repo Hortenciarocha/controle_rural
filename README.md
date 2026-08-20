@@ -18,8 +18,11 @@ Este repositório implementa o **MVP** (Seção 13 do PRD): autenticação, prop
 ## 1. Criar o projeto no Supabase
 
 1. Crie uma conta em [supabase.com](https://supabase.com) e um novo projeto (nome, senha do banco, região). Aguarde ~1–2 min de provisionamento.
-2. Em **Project Settings → API (Data API)**, copie o **Project URL** e a **anon public key**.
+2. Em **Project Settings → API Keys**, copie a **anon public key**. A **Project URL** segue sempre o padrão `https://<project-id>.supabase.co` (o `project-id` aparece em **Project Settings → General**).
 3. Em **Authentication → Providers**, confirme que "Email" está habilitado.
+4. Por padrão o Supabase exige **confirmação por e-mail** antes do primeiro login funcionar. Para testar mais rápido em desenvolvimento, desative essa opção em **Authentication → Sign In / Providers** (procure por "Confirm email"). Em produção, deixe habilitada.
+
+⚠️ Nunca copie a **service_role key** para o front-end nem para o `.env` do `frontend/` — ela dá acesso total ao banco, ignorando o RLS. Ela só seria necessária no `backend/`, e mesmo assim apenas quando a Fase de IA for implementada.
 
 ## 2. Aplicar o schema do banco
 
@@ -57,6 +60,19 @@ npm install
 npm run dev:frontend   # http://localhost:5173
 npm run dev:backend    # http://localhost:3333 (opcional neste MVP)
 ```
+
+### Testando o front-end
+
+Abra `http://localhost:5173`, crie uma conta, faça login, crie uma propriedade e navegue pelos módulos (Propriedade, Plantações, Animais, Estoque, Financeiro, Atividades, Painel).
+
+### Testando o backend
+
+O back-end neste MVP é só um esqueleto — não tem CRUD nem regra de negócio (isso é todo feito pelo front-end direto no Supabase, com RLS). Ele existe apenas para já deixar a estrutura pronta para a Fase de IA (Versão 2/3 do PRD). Por isso, só há duas rotas:
+
+- `GET http://localhost:3333/health` → deve responder `{"status":"ok"}`.
+- `GET http://localhost:3333/ia` → deve responder `501` com uma mensagem dizendo que a IA ainda não foi implementada (esperado — é um placeholder).
+
+Acessar `http://localhost:3333/` (a raiz) mostra **"Cannot GET /"** — isso é o comportamento padrão do Express para uma rota não definida, não é um erro; nenhuma rota foi criada em `/` porque o front-end nunca precisa chamá-la.
 
 ## Estrutura
 
